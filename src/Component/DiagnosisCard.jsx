@@ -1,12 +1,29 @@
 /* eslint-disable react/no-unknown-property */
+import { IoMdArrowDropup } from "react-icons/io";
+import { MdArrowDropDown } from "react-icons/md";
 import DiagnosisHistoryChart from "../Chart/DiagnosticChart";
 import usePatientStore from "../Store/usePatientStore";
-import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 
 export default function DiagnosisCard() {
   const selectedPatient = usePatientStore((state) => state.selectedPatient);
   const diagnosis = selectedPatient?.diagnosis_history?.[0]?.blood_pressure;
-  // const levels = selectedPatient?.diagnosis?.blood_pressure?.levels;
+
+  const getLevelIcon = (level) => {
+    if (level === "Higher than Average") {
+      return (
+        <p>
+          <IoMdArrowDropup className="text-xl" />
+        </p>
+      );
+    } else if (level === "Lower than Average") {
+      return (
+        <p>
+          <MdArrowDropDown className="text-2xl text-black" />
+        </p>
+      );
+    }
+    return null;
+  };
   return (
     <section className=" h-[673px] bg-white rounded-lg shadow px-4 py-4 mb-8">
       <p className="mb-4 font-bold">Diagnostic History</p>
@@ -22,7 +39,10 @@ export default function DiagnosisCard() {
                 Systolic
               </span>
               <span className="text-[22px]">{diagnosis?.systolic?.value}</span>
-              <span className="pb-2 border-b">
+              <span className="pb-2 border-b flex gap-2 items-center">
+                <div className="patient-level">
+                  {getLevelIcon(diagnosis?.systolic?.levels)}
+                </div>
                 {diagnosis?.systolic?.levels}
               </span>
             </p>
@@ -32,13 +52,9 @@ export default function DiagnosisCard() {
                 Diastolic:
               </span>
               <span className="text-[22px]">{diagnosis?.diastolic?.value}</span>
-              <span className="">
+              <span className="flex gap-2 items-center">
                 <div className="patient-level">
-                  {diagnosis?.diastolic?.levels === "Higher than Average" ? (
-                    <FaArrowUp className="text-green-500" />
-                  ) : diagnosis?.diastolic?.levels === "lower than Average" ? (
-                    <FaArrowDown className="text-red-500" />
-                  ) : null}
+                  {getLevelIcon(diagnosis?.diastolic?.levels)}
                 </div>
 
                 {diagnosis?.diastolic?.levels}
@@ -50,7 +66,7 @@ export default function DiagnosisCard() {
       <article className="h-[242px]">
         <div className="">
           <div className=" grid grid-cols-3 gap-4">
-            <div className="h-[242px] bg-teal-50 p-4 rounded-lg flex flex-col gap-2 ">
+            <div className="h-[242px] bg-teal-50 p-4 rounded-lg flex flex-col gap-2 items-center ">
               <p className="w-[96px] h-[96px]">
                 <svg
                   id="respiratory_rate"
@@ -150,14 +166,20 @@ export default function DiagnosisCard() {
                     ?.value
                 }
               </p>
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-gray-500 flex gap-2 items-center">
+                <div className="patient-level">
+                  {getLevelIcon(
+                    selectedPatient?.diagnosis_history?.[0]?.respiratory_rate
+                      ?.levels
+                  )}
+                </div>
                 {
                   selectedPatient?.diagnosis_history?.[0]?.respiratory_rate
                     ?.levels
                 }
               </p>
             </div>
-            <div className="h-[242px] bg-pink-50 p-6 rounded-lg flex flex-col gap-2 ">
+            <div className="h-[242px] bg-pink-50 p-6 rounded-lg flex flex-col gap-2 items-center ">
               <p className="w-[96px] h-[96px]">
                 <svg
                   id="temperature"
@@ -194,6 +216,7 @@ export default function DiagnosisCard() {
                     <g
                       id="Group_16"
                       data-name="Group 16"
+                      // eslint-disable-next-line react/no-unknown-property
                       clip-path="url(#clip-path)"
                     >
                       <path
@@ -265,11 +288,16 @@ export default function DiagnosisCard() {
               <p className="text-[#072635] text-[30px]">
                 {selectedPatient?.diagnosis_history?.[0]?.temperature?.value}
               </p>
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-gray-500 flex gap-2 items-center">
+                <div className="patient-level">
+                  {getLevelIcon(
+                    selectedPatient?.diagnosis_history?.[0]?.temperature?.levels
+                  )}
+                </div>
                 {selectedPatient?.diagnosis_history?.[0]?.temperature?.levels}
               </p>
             </div>
-            <div className="h-[242px] bg-red-50 p-6 rounded-lg flex flex-col gap-2 ">
+            <div className="h-[242px] bg-red-50 p-6 rounded-lg flex flex-col gap-2 items-center ">
               <p className="w-[96px] h-[96px]">
                 <svg
                   id="HeartBPM"
@@ -333,8 +361,13 @@ export default function DiagnosisCard() {
               <p className="text-[#072635] text-[30px]">
                 {selectedPatient?.diagnosis_history?.[0]?.heart_rate?.value} bpm
               </p>
-              <p className="text-xs text-gray-500">
-                <p>{/* {HeartRateIcon level={heartRateLevel} />s */}</p>
+              <p className="text-xs text-gray-500 flex gap-2 items-center">
+                <div className="patient-level">
+                  {getLevelIcon(
+                    selectedPatient?.diagnosis_history?.[0]?.heart_rate?.levels
+                  )}
+                </div>
+
                 {selectedPatient?.diagnosis_history?.[0]?.heart_rate?.levels}
               </p>
             </div>

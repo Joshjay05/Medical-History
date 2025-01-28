@@ -1,7 +1,7 @@
 import PatientCard from "../Component/PatientCard";
 import PatientDetails from "../Component/PateientDetails";
 import usePatientStore from "../Store/usePatientStore";
-import DiagnosisCard from "../components/DiagnosisCard";
+import DiagnosisCard from "../Component/DiagnosisCard";
 import { DiagnosticResult } from "../Component/DiagnosticResult";
 import { LabResults } from "../Component/LabResults";
 import Navbar from "../Component/Navbar";
@@ -39,7 +39,7 @@ const Dashboard = () => {
             ))}
           </div>
         </div>
-        <div className="col-span-6 p-4">
+        <div className="col-span-6 p-3">
           <DiagnosisCard />
           <DiagnosticResult />
         </div>

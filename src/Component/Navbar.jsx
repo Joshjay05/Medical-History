@@ -80,10 +80,8 @@ const Navbar = () => {
               : "flex gap-2 items-center"
           }
         >
-          <li className="">
-            <img src={credit} alt="" className="h-5 w-5" />
-            Transactions
-          </li>
+          <img src={credit} alt="" className="h-5 w-5" />
+          <li className="">Transactions</li>
         </a>
       </ul>
       <div>
