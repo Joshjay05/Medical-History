@@ -27,7 +27,7 @@ const Navbar = () => {
           onClick={() => handleLinkClick("#home")}
           className={
             activeLink === "#home"
-              ? "bg-green-500 flex gap-2 items-center text-white p-4 rounded-full"
+              ? "bg-[#01F0D0] flex gap-2 items-center text-white p-4 rounded-full"
               : "flex gap-2 items-center"
           }
         >
@@ -39,7 +39,7 @@ const Navbar = () => {
           onClick={() => handleLinkClick("#patient")}
           className={
             activeLink === "#patient"
-              ? "bg-green-500 text-white flex gap-2 items-center p-4 rounded-full"
+              ? "bg-[#01F0D0] text-white flex gap-2 items-center p-4 rounded-full"
               : "flex gap-2 items-center"
           }
         >
@@ -52,7 +52,7 @@ const Navbar = () => {
           onClick={() => handleLinkClick("#contact")}
           className={
             activeLink === "#contact"
-              ? "bg-green-500 text-white p-4 flex gap-2 items-center rounded-full"
+              ? "bg-[#01F0D0] text-white p-4 flex gap-2 items-center rounded-full"
               : "p-2 flex gap-2 items-center"
           }
         >
@@ -64,7 +64,7 @@ const Navbar = () => {
           onClick={() => handleLinkClick("#message")}
           className={
             activeLink === "#message"
-              ? "bg-green-500 text-white p-4 flex gap-2 items-center rounded-full"
+              ? "bg-[#01F0D0] text-white p-4 flex gap-2 items-center rounded-full"
               : "flex gap-2 items-center"
           }
         >
@@ -76,7 +76,7 @@ const Navbar = () => {
           onClick={() => handleLinkClick("#transactions")}
           className={
             activeLink === "#transactions"
-              ? "bg-green-500 text-white p-4 flex gap-2 items-center rounded-full"
+              ? "bg-[#01F0D0] text-white p-4 flex gap-2 items-center rounded-full"
               : "flex gap-2 items-center"
           }
         >
